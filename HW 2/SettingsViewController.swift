@@ -44,12 +44,6 @@ class SettingsViewController: UIViewController {
         dismiss(animated: true)
     }
     
-   
-    
-    
-    
-    
-    
     
     @IBAction func rgbSlider(_ sender: UISlider) {
         setColor()

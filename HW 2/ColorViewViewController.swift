@@ -18,17 +18,10 @@ protocol SettingsViewControllerDelegate {
 
 class ColorViewViewController: UIViewController {
 
-    
-    var currentSuperViewColor: UIColor!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        
-      
-        currentSuperViewColor = super.view.backgroundColor
-        
-        
+
     }
     
     
