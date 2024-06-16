@@ -41,7 +41,6 @@ class ColorViewViewController: UIViewController {
 
 extension ColorViewViewController: SettingsViewControllerDelegate {
   
-    
     func setSuperViewColor(colorIndex: UIColor) {
         super.view.backgroundColor = colorIndex
     }

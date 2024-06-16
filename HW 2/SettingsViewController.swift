@@ -12,9 +12,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    
-    
-    
     @IBOutlet weak var blueLabel: UILabel!
     @IBOutlet weak var greenLabel: UILabel!
     @IBOutlet weak var redLabel: UILabel!
@@ -27,16 +24,12 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var blueTF: UITextField!
     @IBOutlet weak var greenTF: UITextField!
     @IBOutlet weak var redTF: UITextField!
-    
-    
-    
-    
+
     @IBOutlet var colorView: UIView!
     
     var delegate: SettingsViewControllerDelegate!
     
     var colorFromSuper:UIColor!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +41,6 @@ class SettingsViewController: UIViewController {
         presentSliderValuesInTextFieldAndLabels()
     }
     
-    
     @IBAction func rgbSlidersTriggered() {
         
         colorView.backgroundColor = UIColor( red: CGFloat((redSlider.value)),
@@ -58,43 +50,30 @@ class SettingsViewController: UIViewController {
         presentSliderValuesInTextFieldAndLabels()
     }
     
+   
     func presentSliderValuesInTextFieldAndLabels() {
         
-        redTF.text = String(redSlider.value)
-        greenTF.text = String(greenSlider.value)
-        blueTF.text = String(blueSlider.value)
-        
-        
+        redTF.text = String(format: "%.2f",redSlider.value)
+        greenTF.text = String(format: "%.2f",greenSlider.value)
+        blueTF.text = String(format: "%.2f",blueSlider.value)
+        redLabel.text = String(format: "%.2f",redSlider.value)
+        greenLabel.text = String(format: "%.2f",greenSlider.value)
+        blueLabel.text = String(format: "%.2f",blueSlider.value)
     }
     
     func getValuesFromView() {
+        
         guard let color = colorView.backgroundColor else { return }
         let ciColor = CIColor(color: color)
         redSlider.value = Float(ciColor.red)
         greenSlider.value = Float(ciColor.green)
         blueSlider.value = Float(ciColor.blue)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     @IBAction func doneButtonPressed() {
        
         delegate.setSuperViewColor(colorIndex: colorView.backgroundColor ?? UIColor(
             red: 0.5, green: 0.1, blue: 0.5, alpha: 1))
         dismiss(animated: true)
     }
-    
-    
-   
-    
-
 }
